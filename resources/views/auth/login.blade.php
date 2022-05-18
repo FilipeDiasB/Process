@@ -1,25 +1,3 @@
-<header>
-    <div class="flex flex-wrap">
-        <div class="w-full">
-            <nav class="relative flex flex-wrap items-center px-2 py-3 bg-blue-200 rounded">
-                    <div class="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
-                        <a class="text-sm font-bold inline-block mr-4 py-2 whitespace-nowrap uppercase text-black" href="{{ route('login') }}">
-                            Process
-                        </a>
-                    </div>
-                    <div class="flex lg:flex-grow items-center">
-                        <ul class="flex flex-col lg:flex-row list-none ml-auto">
-                            <li class="nav-item">
-                                <button class="bg-blue-500 hover:bg-blue-700 rounded-full px-2 py-2">
-                                    <a href="{{ route('register') }}" class="text-sm text-white font-bold px-2 py-4">Register</a>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-            </nav>
-        </div>
-</header>
-<body>
 <x-guest-layout>
     <x-auth-card>
         <!-- Session Status -->
@@ -68,10 +46,13 @@
                 @endif
 
                 <x-button class="ml-3">
+                 <a href="{{ route('register') }}">{{ __('Register') }}
+                </x-button>
+
+                <x-button class="ml-3">
                     {{ __('Log in') }}
                 </x-button>
             </div>
         </form>
     </x-auth-card>
 </x-guest-layout>
-</body>
