@@ -17,9 +17,8 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
 
-@include('layouts.header')
-
     <body>
+    @include('layouts.header')
         <div class="min-h-screen bg-gray-100">
             <!-- Page Content -->
                 {{ $slot }}
