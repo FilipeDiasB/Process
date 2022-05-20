@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Process') }}</title>
+    <!-- Fonts -->
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/flowbite.js') }}"></script>
+</head>
 
-        <title>{{ config('app.name', 'Process') }}</title>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+<div class="flex md:flex-row-reverse flex-wrap">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!--Main Content-->
+<div class="w-full md:w-full bg-gray-100">
+    <div class="container bg-gray-100 pt-8 px-6 md:pl-52">
+        {{ $slot }}
+    </div>
+</div>
+    <!--Header-->
+@include('layouts.header')
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-    </head>
-
-    <body>
-    @include('layouts.header')
-        <div class="min-h-screen bg-gray-100">
-            <!-- Page Content -->
-                {{ $slot }}
-        </div>
-    </body>
+</div>
+</body>
 </html>
