@@ -19,7 +19,7 @@
 
     <!--Main Content-->
 <div class="w-full md:w-full">
-    <div class="container pt-8 px-6 md:pl-52">
+    <div class="container pt-8 px-6 md:pl-52 mt-10 sm:ml-10">
         {{ $slot }}
     </div>
 </div>
