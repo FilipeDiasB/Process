@@ -15,11 +15,11 @@
 
 <body class="font-sans leading-normal tracking-normal">
 
-<div class="flex md:flex-row-reverse flex-wrap">
+<div class="flex">
 
     <!--Main Content-->
-<div class="w-full md:w-full">
-    <div class="container pt-8 px-6 md:pl-52 mt-10 sm:ml-10">
+<div class="w-full h-full">
+    <div class="container md:ml-28 md:mt-14 p-36">
         {{ $slot }}
     </div>
 </div>

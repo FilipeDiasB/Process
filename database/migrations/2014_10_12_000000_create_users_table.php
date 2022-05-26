@@ -19,8 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('phone')->nullable()->default(null);
+
+            $table->foreignId('user_type_id')->nullable(false)->constrained('user_types');
+
             $table->rememberToken();
             $table->timestamps();
+
+
         });
     }
 
@@ -31,6 +37,10 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['user_type_id']);
+        });
+
         Schema::dropIfExists('users');
     }
 }
