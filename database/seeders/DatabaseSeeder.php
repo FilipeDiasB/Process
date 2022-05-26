@@ -9,18 +9,15 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
      * @return void
      */
     public function run()
     {
-//         \App\Models\User::factory(10)->create();
+        //         \App\Models\User::factory(10)->create();
+        $this->call([
+                        UserTypesSeeder::class,
+                        UserSeeder::class
+                    ]);
 
-        $user = [
-          'name' => 'Filipe',
-          'email' => 'filipedias157@gmail.com',
-          'password' => bcrypt('filipe50'),
-        ];
-        User::create($user);
     }
 }

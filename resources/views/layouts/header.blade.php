@@ -1,32 +1,39 @@
-<div class="w-full md:w-3/12 lg:w-1/12 fixed md:left-0 h-16 md:h-screen bg-gray-900">
+{{--Menu top--}}
+<div class="fixed w-full w-full bg-teal-700 h-20">
+    <div class="flex absolute bottom-0 right-20 mb-3">
+        <div class="dropdown h-14 w-14 bg-indigo-400 rounded-full overflow-hidden border-2 border-indigo-200 focus:outline-none focus:border-white">
+            <svg class="text-indigo-800 -left-1" fill="currentColor" viewBox="0 0 20 20"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                      clip-rule="evenodd"></path>
+            </svg>
+        </div>
+        <div class="hidden absolute w-48 mt-16 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+            <ul>
+                <li>
+                    <a href="{{ route('logout') }}"
+                       class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Sair
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">
+                        Configurações do usuário
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <div class="text-white underline font-semibold ml-3 mt-2">Bem vindo, {{ auth()->user()->name }}</div>
+        </div>
+    </div>
+</div>
+{{--Menu lateral header--}}
+<div class="w-full md:w-3/12 lg:w-1/12 fixed md:left-0 h-28 md:h-screen bg-gray-900 absolute">
     <div class="lg:float-right lg:px-6">
         {{--Colunas header--}}
         <ul class="flex md:flex-col">
             {{--User--}}
-            <li class="flex justify-center ml-5 md:mt-8 lg:mt-10">
-                <div class="dropdown lg:mt-10 sm:mt-1 md:mt-8 h-14 w-14 bg-indigo-400 rounded-full overflow-hidden border-2 border-indigo-200 focus:outline-none focus:border-white">
-                    <svg class="text-indigo-800 -left-1" fill="currentColor" viewBox="0 0 20 20"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                              clip-rule="evenodd"></path>
-                    </svg>
-                </div>
-                <div class="hidden absolute ml-64 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
-                    <ul>
-                        <li>
-                            <a href="{{ route('logout') }}"
-                               class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Sair
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                               class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">
-                                Configurações do usuário
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
             <div class="flex md:flex-col md:mt-20 ml-6">
                 {{--Dashboard--}}
                 <li class="ml-6 mt-5 md:mb-8 lg:mb-10">
@@ -63,7 +70,7 @@
                     <div class="hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
                         <ul>
                             <li>
-                                <a href="{{ route('users.create') }}"
+                                <a href=""
                                    class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Criar funcionário
                                 </a>
                             </li>
@@ -96,7 +103,7 @@
                     <div class="hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
                         <ul>
                             <li>
-                                <a href="{{ route('users.create') }}"
+                                <a href=""
                                    class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">proce
                                 </a>
                             </li>
@@ -127,7 +134,7 @@
                     <div class="hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
                         <ul>
                             <li>
-                                <a href="{{ route('users.create') }}"
+                                <a href="{{ route('usuario.create') }}"
                                    class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Criar funcionário
                                 </a>
                             </li>
