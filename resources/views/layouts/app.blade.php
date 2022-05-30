@@ -19,7 +19,7 @@
 <div class="flex">
 
     <!--Main Content-->
-    <div class="container md:ml-56 md:mr-16 mt-32">
+    <div id="content" class="container md:ml-56 md:mr-16 md:mt-32 mt-36 mb-32">
         {{ $slot }}
     </div>
     <!--Header-->

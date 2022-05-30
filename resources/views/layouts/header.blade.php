@@ -1,10 +1,13 @@
-<div class="fixed w-full bg-teal-700 h-20">
+<div class="fixed bottom-0 md:top-0 w-full bg-teal-700 h-20">
+    <div id="menu-icon" class="h-6 w-6 md:ml-52 ml-4 mt-6 ">
+        <svg class="text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24">
+            <path d="M1,6H23a1,1,0,0,0,0-2H1A1,1,0,0,0,1,6Z"/>
+            <path d="M23,9H1a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z"/>
+            <path d="M23,19H1a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z"/>
+            <path d="M23,14H1a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z"/>
+        </svg>
+    </div>
     <div class="flex absolute bottom-0 right-20 mb-3">
-        <div class="ml-56 text-white h-8 w-8">
-            <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24">
-                <path d="M1,6H23a1,1,0,0,0,0-2H1A1,1,0,0,0,1,6Z"/><path d="M23,9H1a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z"/>
-                <path d="M23,19H1a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z"/><path d="M23,14H1a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z"/></svg>
-        </div>
         <div class="dropdown h-14 w-14 bg-indigo-400 rounded-full overflow-hidden border-2 border-indigo-200 focus:outline-none focus:border-white">
             <svg class="text-indigo-800 -left-1" fill="currentColor" viewBox="0 0 20 20"
                  xmlns="http://www.w3.org/2000/svg">
@@ -32,12 +35,12 @@
         </div>
     </div>
 </div>
-<div id="site-menu" class="fixed w-full md:w-3/12 lg:w-1/12 h-28 md:h-full lg:h-full bg-gray-900">
-    <div class="flex md:flex-col md:mt-20 mr-auto">
-        <div class="ml-6 mt-5 md:mb-8 lg:mb-10">
+<div id="sidebar-menu" class="fixed w-full md:w-3/12 lg:w-1/12 h-28 md:h-full lg:h-full bg-gray-900">
+    <div class="flex flex-wrap md:flex-col md:mt-20">
+        <div class="ml-5 mt-5 md:mb-8 lg:mb-10">
             <a href="{{ route('dashboard') }}" class="flex dropdown hover:text-indigo-500 border-b-2 border-gray-900 hover:border-indigo-500">
                 <div class="text-gray-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"/>
                         <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"/>
                     </svg>
@@ -49,10 +52,10 @@
                 </div>
             </a>
         </div>
-        <div class="ml-6 mt-5 md:mb-8 lg:mb-10">
+        <div class="ml-5 mt-5 md:mb-8 lg:mb-10">
             <div class="flex dropdown hover:text-indigo-500 border-b-2 border-gray-900 hover:border-indigo-500">
                 <div class="text-gray-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
                               d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z"
                               clip-rule="evenodd"/>
@@ -80,10 +83,10 @@
                 </ul>
             </div>
         </div>
-        <div class="ml-6 mt-5 md:mb-8 lg:mb-10">
+        <div class="ml-5 mt-5 md:mb-8 lg:mb-10">
             <div class="flex dropdown hover:text-indigo-500 border-b-2 border-gray-900 hover:border-indigo-500">
                 <div class="text-gray-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
                         <path fill-rule="evenodd"
                               d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
@@ -112,10 +115,10 @@
                 </ul>
             </div>
         </div>
-        <div class="ml-6 mt-5 md:mb-8 lg:mb-10">
+        <div class="ml-5 mt-5 md:mb-8 lg:mb-10">
             <div class="flex dropdown hover:text-indigo-500 border-b-2 border-gray-900 hover:border-indigo-500">
                 <div class="text-gray-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20"
                          fill="currentColor">
                         <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
                     </svg>
@@ -147,4 +150,15 @@
 <script>
     const dropdownMenu = document.querySelectorAll('.dropdown');
     dropdownMenu.forEach(item => item.onclick = () => item.nextElementSibling.classList.toggle('hidden'));
+
+    const menuIcon = document.querySelector('#menu-icon');
+    const content = document.querySelector('#content');
+
+    menuIcon.onclick = () => {
+        document.querySelector('#sidebar-menu').classList.toggle('hidden');
+        content.classList.toggle('md:ml-56');
+        content.classList.toggle('md:ml-24');
+        content.classList.toggle('mt-36');
+        content.classList.toggle('mt-10');
+    }
 </script>
