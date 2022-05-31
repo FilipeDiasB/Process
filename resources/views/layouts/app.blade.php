@@ -11,6 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 </head>
 
 <body class="font-sans leading-normal tracking-normal">
@@ -18,11 +19,9 @@
 <div class="flex">
 
     <!--Main Content-->
-<div class="w-full h-full">
-    <div class="container md:ml-28 md:mt-14 p-36">
+    <div id="content" class="container md:ml-56 md:mr-16 md:mt-32 mt-36 mb-32">
         {{ $slot }}
     </div>
-</div>
     <!--Header-->
 @include('layouts.header')
 

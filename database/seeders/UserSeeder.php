@@ -9,7 +9,6 @@ class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
      * @return void
      */
     public function run()
@@ -21,6 +20,8 @@ class UserSeeder extends Seeder
                                  'email'        => 'filipedias157@gmail.com',
                                  'password'     => bcrypt('filipe50'),
                                  'phone'        => '27999642519',
+                                 'cpf'          => '18737575732',
+                                 'rg'          => '4444444',
                                  'user_type_id' => '1',
                              ],
                              [
@@ -29,11 +30,13 @@ class UserSeeder extends Seeder
                                  'email'        => 'j.v_dias@hotmail.com',
                                  'password'     => bcrypt('filipe50'),
                                  'phone'        => '27999642520',
+                                 'cpf'          => '333333333',
+                                 'rg'          => '4444445',
                                  'user_type_id' => '2',
                              ],
                          ]);
 
-        $users->each(function($item, $key){
+        $users->each(function($item, $key) {
             User::create($item);
         });
     }

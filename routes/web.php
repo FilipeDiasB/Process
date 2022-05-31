@@ -14,9 +14,7 @@ use \App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::view('/dashboard', 'dashboard')->middleware(['auth'])->name('dashboard');
 
 
 Route::group(['middleware' => 'CheckType:master', 'prefix' => 'master'], function(){
