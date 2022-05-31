@@ -27,8 +27,9 @@ class UserRequest extends FormRequest
             'name' => 'min:3',
             'password' => 'min:3',
             'user_type_id' => 'required',
-            'phone' => 'required|digits_between:11,11',
-            'cpf' => 'required|digits_between:11,11',
+            'phone' => 'required|max:15|min:15',
+            'cpf' => 'required|string|' . ($this->cpf_cnpj == 0 ? 'cpf' : 'cnpj'),
+            'rg' => 'required',
         ];
     }
 }

@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
                                  'password'     => bcrypt('filipe50'),
                                  'phone'        => '27999642519',
                                  'cpf'          => '18737575732',
+                                 'rg'          => '4444444',
                                  'user_type_id' => '1',
                              ],
                              [
@@ -30,6 +31,7 @@ class UserSeeder extends Seeder
                                  'password'     => bcrypt('filipe50'),
                                  'phone'        => '27999642520',
                                  'cpf'          => '333333333',
+                                 'rg'          => '4444445',
                                  'user_type_id' => '2',
                              ],
                          ]);
