@@ -11,7 +11,7 @@ class UserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,15 +21,25 @@ class UserRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'min:3',
             'password' => 'min:3',
-            'user_type_id' => 'required',
-            'phone' => 'required|max:15|min:15',
-            'cpf' => 'required|string|' . ($this->cpf_cnpj == 0 ? 'cpf' : 'cnpj'),
+            'email' => 'required',
+            'user_type' => 'required',
+            'user_permission_id' => 'required',
+            'phone' => 'required|celular_com_ddd',
+            'document' => 'required|string|' . ($this->user_type == 0 ? 'formato_cpf' : 'formato_cnpj'),
             'rg' => 'required',
         ];
+    }
+
+    public function validated(): array
+    {
+        $data = parent::validated();
+        $data['password'] = bcrypt($data['password']);
+
+        return $data;
     }
 }

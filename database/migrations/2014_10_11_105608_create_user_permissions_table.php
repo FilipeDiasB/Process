@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UserTypes extends Migration
+class CreateUserPermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class UserTypes extends Migration
      */
     public function up()
     {
-        Schema::create('user_types', function(Blueprint $table) {
+        Schema::create('user_permissions', function(Blueprint $table) {
             $table->id();
 
             $table->string('nome', 50);

@@ -23,7 +23,7 @@ class CheckType
           'profissional' => [1, 2, 3]
         ];
 
-        abort_if(!in_array(auth()->user()->user_type_id, $params[$param] ?? []), Response::HTTP_FORBIDDEN);
+        abort_if(!in_array(auth()->user()->user_permission_id, $params[$param] ?? []), Response::HTTP_FORBIDDEN);
 
         return $next($request);
     }

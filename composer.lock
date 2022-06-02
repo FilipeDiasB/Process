@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ecc65fa0a28b1981b943d85efcc1219",
+    "content-hash": "b09643f9703a2d8334b5241de4751fa9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -956,6 +956,65 @@
                 }
             ],
             "time": "2022-03-20T21:55:58+00:00"
+        },
+        {
+            "name": "joaovdiasb/laravel-brazillian",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joaovdiasb/laravel-brazillian.git",
+                "reference": "b2355ae32cf85d47338eb557ce079147dcfee616"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joaovdiasb/laravel-brazillian/zipball/b2355ae32cf85d47338eb557ce079147dcfee616",
+                "reference": "b2355ae32cf85d47338eb557ce079147dcfee616",
+                "shasum": ""
+            },
+            "require-dev": {
+                "illuminate/http": "^7.0",
+                "illuminate/support": "^7.0",
+                "nunomaduro/collision": "^4.0",
+                "orchestra/testbench": "^5.0",
+                "phpunit/phpunit": "9.4",
+                "symfony/thanks": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Joaovdiasb\\LaravelBrazillian\\LaravelBrazillianServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Joaovdiasb\\LaravelBrazillian\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Victor Dias Bittencourt",
+                    "email": "j.v_dias@hotmail.com"
+                }
+            ],
+            "keywords": [
+                "Brazillian",
+                "cep",
+                "cnpj",
+                "cpf",
+                "laravel",
+                "pt-BR"
+            ],
+            "support": {
+                "issues": "https://github.com/joaovdiasb/laravel-brazillian/issues",
+                "source": "https://github.com/joaovdiasb/laravel-brazillian/tree/0.0.3"
+            },
+            "time": "2021-06-16T00:22:35+00:00"
         },
         {
             "name": "laravel/framework",

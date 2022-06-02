@@ -16,19 +16,18 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->default(null);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('cpf')->unique();
+            $table->string('user_type')->default(null);
+            $table->string('document')->unique();
             $table->string('rg')->unique();
             $table->string('phone')->nullable()->default(null);
 
-            $table->foreignId('user_type_id')->nullable(false)->constrained('user_types');
+            $table->foreignId('user_permission_id')->nullable(false)->constrained('user_permissions');
 
             $table->rememberToken();
             $table->timestamps();
-
-
         });
     }
 
@@ -40,7 +39,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['user_type_id']);
+            $table->dropForeign(['user_permission_id']);
         });
 
         Schema::dropIfExists('users');
