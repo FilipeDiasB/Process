@@ -49,18 +49,17 @@ namespace App\Models{
 namespace App\Models{
 /**
  * App\Models\UserTypes
- *
  * @property int $id
  * @property string $nome
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|UserTypes newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|UserTypes newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|UserTypes query()
- * @method static \Illuminate\Database\Eloquent\Builder|UserTypes whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|UserTypes whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|UserTypes whereNome($value)
- * @method static \Illuminate\Database\Eloquent\Builder|UserTypes whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserPermission newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserPermission newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserPermission query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserPermission whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserPermission whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserPermission whereNome($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserPermission whereUpdatedAt($value)
  */
 	class UserTypes extends \Eloquent {}
 }

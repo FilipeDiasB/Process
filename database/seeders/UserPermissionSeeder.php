@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\UserTypes;
+use App\Models\UserPermission;
 use Illuminate\Database\Seeder;
 
-class UserTypesSeeder extends Seeder
+class UserPermissionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -29,7 +29,7 @@ class UserTypesSeeder extends Seeder
                          ]);
 
         $dados->each(function($item, $key) {
-            UserTypes::create($item);
+            UserPermission::create($item);
         });
     }
 }

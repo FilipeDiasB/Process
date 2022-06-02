@@ -1,4 +1,5 @@
 <x-app-layout>
+    <x-title> - cadastro</x-title>
     <x-auth-validation-errors/>
     <p class="mb-10 font-semibold text-xl ml-2">Cadastrar Usuário</p>
     <form method="POST" action="{{ route('usuario.store') }}">
@@ -7,124 +8,119 @@
             <div class="grid grid-cols-2">
                 <!-- Permissão Usuário -->
                 <div class="mt-8">
-                    <x-label for="user_type" :value="__('Permissão do usuário')"/>
-                    <x-inputRadio id="admin" name="user_type_id" value="2" labelFor="user_type" label="Administrador"/>
-                    <x-inputRadio id="employee" name="user_type_id" value="3" labelFor="user_type" label="Funcionário"/>
+                    <x-label for="user_permission">Permissão do usuário</x-label>
+                    <x-inputRadio id="admin" name="user_permission_id" value="2" labelFor="user_permission" label="Administrador"/>
+                    <x-inputRadio id="employee" name="user_permission_id" value="3" labelFor="user_permission" label="Funcionário"/>
                 </div>
                 <!-- Tipo Usuário -->
                 <div class="mt-8">
-                    <x-label for="document" :value="__('Tipo de usuário')"/>
-                    <x-inputRadio id="cpf_radio" name="cpf_cnpj" value="0" labelFor="cpf" label="Pessoa física"/>
-                    <x-inputRadio id="cnpj_radio" name="cpf_cnpj" value="1" labelFor="cpf" label="Pessoa jurídica"/>
+                    <x-label for="document_radio">Tipo de usuário</x-label>
+                    <x-inputRadio id="cpf_radio" name="user_type" value="0" label="Pessoa física"/>
+                    <x-inputRadio id="cnpj_radio" name="user_type" value="1" label="Pessoa jurídica"/>
                 </div>
             </div>
             <!-- Nome -->
             <div class="mt-8 md:ml-6">
-                <x-label for="name" :value="__('Nome')"/>
+                <x-label for="name">Nome</x-label>
                 <x-input id="name" class="block mt-1 w-full" type="name" name="name" :value="old('name')" required
                          autofocus/>
             </div>
             <!-- Email -->
             <div class="mt-8">
-                <x-label for="email" :value="__('Email')"/>
+                <x-label for="email">Email</x-label>
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
                          autofocus/>
             </div>
             <!-- Password -->
             <div class="mt-8 md:ml-6">
-                <x-label for="password" :value="__('Password')"/>
+                <x-label for="password">Senha</x-label>
                 <x-input id="password" class="block mt-1 w-full"
-                         type="password" :value="old('password')"
+                         type="password"
                          name="password"
                          required autocomplete="current-password"/>
             </div>
             <!-- Cpj/Cnpj -->
-            <div id="cpf_field" class="mt-8">
-                <x-label for="cpf" :value="__('CPF')"/>
-                <x-input id="cpf" class="block mt-1 w-full"
-                         type="text" maxlength="14"
-                         name="cpf"/>
-            </div>
-            <div id="cnpj_field" class="mt-8 hidden">
-                <x-label for="cnpj" :value="__('CNPJ')"/>
-                <x-input id="cnpj" class="block mt-1 w-full"
-                         type="text" maxlength="19"
-                         name="cpf"/>
+            <div class="mt-8">
+                <x-label for="document">CPF</x-label>
+                <x-input id="document" class="block mt-1 w-full"
+                         type="text" maxlength="17"
+                         name="document" onkeypress="mask(this,cpfCnpj)"/>
             </div>
             <!-- RG -->
             <div class="mt-8 md:ml-6">
-                <x-label for="rg" :value="__('RG')"/>
+                <x-label for="rg">RG</x-label>
                 <x-input id="rg" class="block mt-1 w-full" type="text" name="rg" :value="old('rg')"/>
             </div>
             <!-- Phone -->
             <div class="mt-8">
-                <x-label for="phone" :value="__('Celular')"/>
+                <x-label for="phone">Celular</x-label>
                 <x-input id="phone" class="block mt-1 w-full"
-                         type="text" maxlength="15"
+                         type="text" onkeydown="mask(this, telefone)" maxlength="15"
                          name="phone" :value="old('phone')"/>
             </div>
         </div>
         <x-button class="mt-10 ml-2 md:ml-0">Criar</x-button>
     </form>
     <script>
+        function mask(objeto, mascara) {
+            obj = objeto
+            masc = mascara
+            setTimeout("maskEx()", 1)
+        }
 
-        const phone = document.querySelector('#phone');
+        function maskEx() {
+            obj.value = masc(obj.value)
+        }
 
-        phone.addEventListener('keypress', () => {
-            let length = phone.value.length
-            if (length == 0) {
-                phone.value += '('
-            } else if (length == 3) {
-                phone.value += ') '
-            } else if (length == 10) {
-                phone.value += '-'
+        function telefone(tel) {
+            tel=tel.replace(/\D/g,"");
+            tel=tel.replace(/^(\d{2})(\d)/g,"($1) $2");
+            tel=tel.replace(/(\d)(\d{4})$/,"$1-$2");
+            return tel;
+        }
+
+            function cpfCnpj(v) {
+                //Remove tudo o que não é dígito
+                v = v.replace(/\D/g, "")
+                if (v.length <= 13) { //CPF
+                    //Coloca um ponto entre o terceiro e o quarto dígitos
+                    v = v.replace(/(\d{3})(\d)/, "$1.$2")
+
+                    //Coloca um ponto entre o terceiro e o quarto dígitos
+                    //de novo (para o segundo bloco de números)
+                    v = v.replace(/(\d{3})(\d)/, "$1.$2")
+
+                    //Coloca um hífen entre o terceiro e o quarto dígitos
+                    v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+                } else { //CNPJ
+                    //Coloca ponto entre o segundo e o terceiro dígitos
+                    v = v.replace(/(\d{2})(\d)/, "$1.$2")
+
+                    //Coloca ponto entre o bloco terceiro e quarto dígitos
+                    v = v.replace(/(\d{3})(\d)/, "$1.$2")
+
+                    // Coloca uma barra entre o bloco terceiro e quarto dígitos
+                    v = v.replace(/(\d{3})(\d)/, "$1/$2")
+
+                    // Coloca um hífen depois do bloco de quatro dígitos
+                    v = v.replace(/(\d{4})(\d)/, "$1-$2")
+                }
+                return v
             }
-        });
 
-        const cpf = document.querySelector('#cpf');
+            const cpfRadio = document.querySelector('#cpf_radio');
+            const cnpjRadio = document.querySelector('#cnpj_radio');
 
-        cpf.addEventListener('keypress', () => {
-            let length = cpf.value.length
-            if (length === 3 || length === 7) {
-                cpf.value += '.'
-            } else if (length === 11) {
-                cpf.value += '-'
-            }
-        });
-
-        const cnpj = document.querySelector('#cnpj');
-
-        cnpj.addEventListener('keypress', () => {
-            let length = cnpj.value.length
-            if (length === 2 || length === 6) {
-                cnpj.value += '.'
-            } else if (length === 11) {
-                cnpj.value += '/'
-            } else if (length === 16) {
-                cnpj.value += '-'
-            }
-        })
-
-        // const cpfRadio = document.querySelector('#cpf_radio');
-        // const cnpjRadio = document.querySelector('#cnpj_radio');
-        document.getElementById('cpf_radio').addEventListener('click', () => {
-            if (document.getElementById('cpf_radio').checked == true) {
-                document.getElementById('cnpj_field').classList.add('hidden')
-                document.getElementById('cnpj').value = ""
-                document.getElementById('cpf_field').classList.remove('hidden')
-            }
-        })
-
-
-        document.getElementById('cnpj_radio').addEventListener('click', () => {
-            if (document.getElementById('cnpj_radio').checked == true) {
-                document.getElementById('cpf_field').classList.add('hidden')
-                document.getElementById('cpf').value = ""
-                document.getElementById('cnpj_field').classList.remove('hidden')
-            }
-        })
-
-
+            cpfRadio.addEventListener('click', () => {
+                if (cpfRadio.checked == true) {
+                    document.querySelector('label[for="document"]').innerHTML = 'CPF'
+                }
+            })
+            cnpjRadio.addEventListener('click', () => {
+                if (cnpjRadio.checked == true) {
+                    document.querySelector('label[for="document"]').innerHTML = 'CNPJ'
+                }
+            })
     </script>
 </x-app-layout>
 
