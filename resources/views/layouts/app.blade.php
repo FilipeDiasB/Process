@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-{{--    <script src="https://cdn.tailwindcss.com"></script>--}}
+    <script src="https://cdn.tailwindcss.com"></script>
 <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
