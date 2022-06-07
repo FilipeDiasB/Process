@@ -32,6 +32,7 @@ class UserRequest extends FormRequest
             'phone' => 'required|celular_com_ddd',
             'document' => 'required|string|' . ($this->user_type == 0 ? 'formato_cpf' : 'formato_cnpj'),
             'rg' => 'required',
+            'file' => 'required|max:2048',
         ];
     }
 

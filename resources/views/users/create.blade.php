@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-title> - cadastro</x-title>
+    <x-title>Cadastro</x-title>
     <x-auth-validation-errors/>
     <p class="mb-10 font-semibold text-xl ml-2">Cadastrar Usuário</p>
     <form method="POST" action="{{ route('usuario.store') }}">
@@ -57,6 +57,9 @@
                 <x-input id="phone" class="block mt-1 w-full"
                          type="text" onkeydown="mask(this, telefone)" maxlength="15"
                          name="phone" :value="old('phone')"/>
+            </div>
+            <div class="mt-8 md:ml-6">
+                <x-input id="file" type="file" name="file" placeholder="Insira o documento"/>
             </div>
         </div>
         <x-button class="mt-10 ml-2 md:ml-0">Criar</x-button>

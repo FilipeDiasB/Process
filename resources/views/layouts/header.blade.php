@@ -15,7 +15,7 @@
                       clip-rule="evenodd"></path>
             </svg>
         </div>
-        <div class="hidden absolute w-48 bottom-14 right-3 mb-1 md:-bottom-28 md:mb-0 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+        <div class="drop-menu hidden absolute w-48 bottom-14 right-3 mb-1 md:-bottom-28 md:mb-0 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
             <ul>
                 <li>
                     <a href="{{ route('logout') }}"
@@ -35,7 +35,7 @@
         </div>
     </div>
 </div>
-<div id="sidebar-menu" class="fixed w-full md:w-3/12 lg:w-1/12 h-28 md:h-full lg:h-full bg-gray-900 shadow-2xl">
+<div id="sidebar-menu" class="fixed top-0 w-full md:w-3/12 lg:w-1/12 h-28 md:h-full lg:h-full bg-gray-900 shadow-2xl">
     <div class="flex flex-wrap md:flex-col md:mt-20">
         <div class="ml-5 mt-5 md:mb-8 lg:mb-10">
             <a href="{{ route('dashboard') }}" class="flex">
@@ -67,7 +67,7 @@
                     </button>
                 </div>
             </div>
-            <div class="hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+            <div class="drop-menu hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
                 <ul>
                     <li>
                         <a href=""
@@ -96,7 +96,7 @@
                     </button>
                 </div>
             </div>
-            <div class="hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+            <div class="drop-menu hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
                 <ul>
                     <li>
                         <a href=""
@@ -128,7 +128,7 @@
                     </button>
                 </div>
             </div>
-            <div class="hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+            <div class="drop-menu hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
                 <ul>
                     @if(!in_array(auth()->user()->user_permission_id, [3]))
                         <li>
@@ -161,7 +161,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+                <div class="drop-menu hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
                     <ul>
                         <li>
                             <a href="{{ route('usuario.create') }}"
@@ -183,6 +183,9 @@
     <script>
         const dropdownMenu = document.querySelectorAll('.dropdown');
         dropdownMenu.forEach(item => item.onclick = () => item.nextElementSibling.classList.toggle('hidden'));
+
+        document.querySelector('#app').onclick = () => document.querySelectorAll('.drop-menu').forEach(item => item.classList.add('hidden'));
+
 
         const menuIcon = document.querySelector('#menu-icon');
         const content = document.querySelector('#content');
