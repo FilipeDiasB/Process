@@ -7,22 +7,17 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 {{--    <script src="https://cdn.tailwindcss.com"></script>--}}
-    <!-- Scripts -->
+<!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 </head>
-
 <body class="font-sans leading-normal tracking-normal">
-
-<div class="flex">
-
-    <!--Main Content-->
+<!--Main Content-->
+<div id="app" class="flex">
     <div id="content" class="container md:ml-56 md:mr-16 md:mt-32 mt-36 mb-32">
         {{ $slot }}
     </div>
-    <!--Header-->
-@include('layouts.header')
-
 </div>
 </body>
+@include('layouts.header')
 </html>

@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('document')->unique();
             $table->string('rg')->unique();
             $table->string('phone')->nullable()->default(null);
+            $table->string('file')->nullable();
 
             $table->foreignId('user_permission_id')->nullable(false)->constrained('user_permissions');
 

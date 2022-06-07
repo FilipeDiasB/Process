@@ -1,1 +1,1 @@
-<title>{{ config('app.name')}} {{ $slot }}</title>
+<title>{{ config('app.name') }} - {{ $slot }}</title>

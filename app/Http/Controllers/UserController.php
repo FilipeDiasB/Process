@@ -35,6 +35,9 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         User::create($request->validated());
+        $file = $request->file('file');
+        $path = $file->store('public/file');
+        $this->create($path);
     }
 
     /**
