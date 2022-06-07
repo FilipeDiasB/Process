@@ -35,9 +35,23 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         User::create($request->validated());
-        $file = $request->file('file');
-        $path = $file->store('public/file');
-        $this->create($path);
+
+        $file     = $request->file('file');
+
+        if ($request->hasFile('file') && $file->isValid()) {
+            $name      = $file->hashName();
+
+            $upload = $file->storeAs('user', $name);
+
+            if (!$upload) {
+                return redirect()
+                    ->back()
+                    ->with('message', 'Falha ao fazer upload do documento')
+                    ->withInput();
+            }
+        }
+
+        return redirect()->back()->with('success', 'Usuário criado com sucesso');
     }
 
     /**
