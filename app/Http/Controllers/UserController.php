@@ -32,21 +32,21 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        User::create($request->validated());
+        User::create($request->all());
 
         $file     = $request->file('file');
 
         if ($request->hasFile('file') && $file->isValid()) {
             $name      = $file->hashName();
 
-            $upload = $file->storeAs('user', $name);
+            $upload = $file->move(public_path('storage/user'), $name);
 
             if (!$upload) {
                 return redirect()
                     ->back()
-                    ->with('message', 'Falha ao fazer upload do documento')
+                    ->with('error', 'Falha ao fazer upload do documento')
                     ->withInput();
             }
         }
@@ -61,7 +61,18 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+       $user = User::where('id', $id)->first();
+
+        return view('users.show', compact('user'));
+    }
+
+    public function listagem()
+    {
+        $users = User::query()
+            ->where('user_permission_id', '=', 3)
+            ->paginate(6);
+
+        return view('users.info', compact('users'));
     }
 
     /**

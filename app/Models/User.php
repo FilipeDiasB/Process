@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -37,5 +39,10 @@ class User extends Authenticatable
     public function userType()
     {
         $this->belongsTo(UserPermission::class);
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+       return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y');
     }
 }
