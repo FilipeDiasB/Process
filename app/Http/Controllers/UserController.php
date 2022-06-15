@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
-use function GuzzleHttp\Promise\all;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -32,7 +32,7 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         User::create($request->all());
 
@@ -41,7 +41,7 @@ class UserController extends Controller
         if ($request->hasFile('file') && $file->isValid()) {
             $name      = $file->hashName();
 
-            $upload = $file->move(public_path('storage/user'), $name);
+            $upload = $request->file->storeAs('users', $name);
 
             if (!$upload) {
                 return redirect()
@@ -52,6 +52,15 @@ class UserController extends Controller
         }
 
         return redirect()->back()->with('success', 'Usuário criado com sucesso');
+    }
+
+    public function listagem()
+    {
+        $users = User::query()
+                     ->where('user_permission_id', '=', 3)
+                     ->paginate(6);
+
+        return view('users.listing-table', compact('users'));
     }
 
     /**
@@ -66,13 +75,10 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
-    public function listagem()
+    public function download($id)
     {
-        $users = User::query()
-            ->where('user_permission_id', '=', 3)
-            ->paginate(6);
-
-        return view('users.info', compact('users'));
+        $path = User::find($id, 'file')->get();
+        return response()->download(storage_path('users/' . $path));
     }
 
     /**
