@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-title>Usuários ativos</x-title>
-        <div class="relative overflow-x-auto rounded-lg p-3 shadow-lg">
-            <table class="w-full text-sm text-left text-gray-400">
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-400 border-x">
                 <thead class="text-xs uppercase text-black bg-gray-200">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -37,7 +37,7 @@
                             {{ $user->created_at }}
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
                         </td>
                     </tr>
                     @endforeach

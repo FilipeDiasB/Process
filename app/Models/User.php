@@ -41,8 +41,10 @@ class User extends Authenticatable
         $this->belongsTo(UserPermission::class);
     }
 
-    public function getCreatedAtAttribute($value)
+    public function createdAt(): Attribute
     {
-       return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y');
+       return new Attribute(
+           get: fn($value) => Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y')
+       );
     }
 }

@@ -19,6 +19,7 @@ Route::view('/dashboard', 'dashboard')->middleware(['auth'])->name('dashboard');
 
 Route::group(['middleware' => 'CheckType:master', 'prefix' => 'master'], function(){
     Route::get('usuario/listagem', [UserController::class, 'listagem'])->name('usuario.listagem');
+    Route::get('usuario/download/{id}', [UserController::class, 'download'])->name('usuario.download');
     Route::resource('usuario', UserController::class);
 });
 
