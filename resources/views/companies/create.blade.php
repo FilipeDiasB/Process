@@ -2,28 +2,20 @@
     <x-title>Cadastro empresa</x-title>
     <x-auth-validation-errors/>
     <p class="mb-10 font-semibold text-xl ml-2">Cadastrar Empresa</p>
-    <form method="POST" action="{{ route('usuario.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('empresa.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 p-3 md:p-0">
             <!-- Nome -->
             <div class="mt-8 md:ml-6">
-                <x-label for="name">Razão social</x-label>
-                <x-input id="name" class="block mt-1 w-full" type="name" name="name" :value="old('name')" required
+                <x-label for="company_name">Razão social</x-label>
+                <x-input id="company_name" class="block mt-1 w-full" type="name" name="company_name" :value="old('company_name')" required
                          autofocus/>
             </div>
             <!-- Email -->
             <div class="mt-8">
                 <x-label for="trading_name">Nome fantasia</x-label>
-                <x-input id="trading_name" class="block mt-1 w-full" type="text" name="trading_name" :value="old('email')" required
+                <x-input id="trading_name" class="block mt-1 w-full" type="text" name="trading_name" :value="old('trading_name')" required
                          autofocus/>
-            </div>
-            <!-- Password -->
-            <div class="mt-8 md:ml-6">
-                <x-label for="password">Senha</x-label>
-                <x-input id="password" class="block mt-1 w-full"
-                         type="password"
-                         name="password"
-                         required autocomplete="current-password"/>
             </div>
             <!-- CNPJ -->
             <div class="mt-8">

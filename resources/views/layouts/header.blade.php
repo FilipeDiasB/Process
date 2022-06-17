@@ -70,7 +70,7 @@
             <div class="drop-menu hidden absolute md:ml-28 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
                 <ul>
                     <li>
-                        <a href=""
+                        <a href="{{ route('empresa.create') }}"
                            class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Criar empresas
                         </a>
                     </li>

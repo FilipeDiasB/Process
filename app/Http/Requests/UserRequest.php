@@ -28,7 +28,7 @@ class UserRequest extends FormRequest
             'password' => 'min:3',
             'email' => 'required',
             'user_type' => 'required',
-            'user_permission_id' => 'required',
+//            'user_permission_id' => 'required',
             'phone' => 'required|celular_com_ddd',
             'document' => 'required|string|' . ($this->user_type == 0 ? 'formato_cpf' : 'formato_cnpj'),
             'rg' => 'required',
