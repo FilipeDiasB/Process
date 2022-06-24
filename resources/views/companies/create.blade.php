@@ -2,38 +2,30 @@
     <x-title>Cadastro empresa</x-title>
     <x-auth-validation-errors/>
     <p class="mb-10 font-semibold text-xl ml-2">Cadastrar Empresa</p>
-    <form method="POST" action="{{ route('usuario.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('empresa.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 p-3 md:p-0">
-            <!-- Nome -->
-            <div class="mt-8 md:ml-6">
-                <x-label for="name">Razão social</x-label>
-                <x-input id="name" class="block mt-1 w-full" type="name" name="name" :value="old('name')" required
-                         autofocus/>
-            </div>
-            <!-- Email -->
+            <!-- Razão social -->
             <div class="mt-8">
-                <x-label for="trading_name">Nome fantasia</x-label>
-                <x-input id="trading_name" class="block mt-1 w-full" type="text" name="trading_name" :value="old('email')" required
+                <x-label for="name">Razão social</x-label>
+                <x-input id="company_name" class="block mt-1 w-full" type="name" name="name" :value="old('name')" required
                          autofocus/>
             </div>
-            <!-- Password -->
+            <!-- Nome fantasia -->
             <div class="mt-8 md:ml-6">
-                <x-label for="password">Senha</x-label>
-                <x-input id="password" class="block mt-1 w-full"
-                         type="password"
-                         name="password"
-                         required autocomplete="current-password"/>
+                <x-label for="trading_name">Nome fantasia</x-label>
+                <x-input id="trading_name" class="block mt-1 w-full" type="text" name="trading_name" :value="old('trading_name')" required
+                         autofocus/>
             </div>
             <!-- CNPJ -->
             <div class="mt-8">
                 <x-label for="document">CNPJ</x-label>
                 <x-input id="document" class="block mt-1 w-full"
-                         type="text" maxlength="17"
+                         type="text" maxlength="18"
                          name="document" onkeypress="mask(this,cnpj)"/>
             </div>
             <!-- Phone -->
-            <div class="mt-8">
+            <div class="mt-8 md:ml-6">
                 <x-label for="phone">Telefone de contato</x-label>
                 <x-input id="phone" class="block mt-1 w-full"
                          type="text" onkeydown="mask(this, telefone)" maxlength="15"
@@ -62,6 +54,7 @@
 
         function cnpj(v) {
             //CNPJ
+            v = v.replace(/\D/g, "")
             //Coloca ponto entre o segundo e o terceiro dígitos
             v = v.replace(/(\d{2})(\d)/, "$1.$2")
 

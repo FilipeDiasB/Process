@@ -3,13 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
@@ -31,24 +26,24 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        $user = User::create($request->validated());
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $file = $request->file;
 
-        event(new Registered($user));
+        if ($request->hasFile('file') && $file->isValid()) {
+            $name = $file->hashName();
 
-        Auth::login($user);
+            $uploadPath = $request->file->storeAs('users', $name);
 
-        return redirect(RouteServiceProvider::HOME);
+            if (!$uploadPath) {
+                return redirect()->back();
+            }
+        }
+
+        $user->update(['file' => $uploadPath]);
+
+        return redirect()->back()->with('success', 'Usuário criado com sucesso');
     }
 }

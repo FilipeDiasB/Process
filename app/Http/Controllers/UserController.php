@@ -34,22 +34,21 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        User::create($request->all());
+        $user = User::create($request->validated());
 
-        $file     = $request->file('file');
+        $file = $request->file;
 
         if ($request->hasFile('file') && $file->isValid()) {
-            $name      = $file->hashName();
+            $name = $file->hashName();
 
-            $upload = $request->file->storeAs('users', $name);
+            $uploadPath = $request->file->storeAs('users', $name);
 
-            if (!$upload) {
-                return redirect()
-                    ->back()
-                    ->with('error', 'Falha ao fazer upload do documento')
-                    ->withInput();
+            if (!$uploadPath) {
+                return redirect()->back();
             }
         }
+
+        $user->update(['file' => $uploadPath]);
 
         return redirect()->back()->with('success', 'Usuário criado com sucesso');
     }
@@ -58,6 +57,7 @@ class UserController extends Controller
     {
         $users = User::query()
                      ->where('user_permission_id', '=', 3)
+                     ->orderBy('created_at')
                      ->paginate(6);
 
         return view('users.listing-table', compact('users'));
@@ -70,15 +70,14 @@ class UserController extends Controller
      */
     public function show($id)
     {
-       $user = User::where('id', $id)->first();
+        $user = User::where('id', $id)->first();
 
         return view('users.show', compact('user'));
     }
 
-    public function download($id)
+    public function download(User $user)
     {
-        $path = User::find($id, 'file')->get();
-        return response()->download(storage_path('users/' . $path));
+        return response()->download(storage_path("app/{$user->file}"));
     }
 
     /**

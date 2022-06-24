@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-title>Perfil</x-title>
-    <div class="w-2/3 flex flex-col bg-white shadow-md rounded-lg overflow-hidden">
+    <div class="w-2/3 flex flex-col bg-white shadow rounded-lg overflow-hidden">
         <div class="flex justify-between items-center bg-gray-200 text-gray-700 text-lg px-6 py-4">
             <div class="text-sm font-semibold">Usuário criado em: {{ $user->created_at }}</div>
         </div>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="px-4 py-4">
-            <a href="{{ route('usuario.download', $user->file) }}">download</a>
+            <a href="{{ route('usuario.download', $user) }}" class="bg-gray-600 text-white font-semibold px-2 py-1 rounded-lg shadow">Identificação</a>
         </div>
     </div>
 </x-app-layout>

@@ -25,7 +25,9 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable()->default(null);
             $table->string('file')->nullable();
 
-            $table->foreignId('user_permission_id')->nullable(false)->constrained('user_permissions');
+            $table->foreignId('user_permission_id')->nullable(false)->default(3)->constrained('user_permissions');
+            $table->foreignId('company_id')->default(null)->nullable(true)->constrained('companies');
+            $table->foreignId('department_id')->default(null)->nullable(true)->constrained('departments');
 
             $table->rememberToken();
             $table->timestamps();
