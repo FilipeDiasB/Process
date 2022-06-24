@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\CompanyController;
+use \App\Http\Controllers\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,11 @@ Route::group(['middleware' => 'CheckType:master', 'prefix' => 'master'], functio
 
     // Companies
     Route::resource('empresa', CompanyController::class);
+
+    // Departments
+    Route::get('setor/cadastrar', [DepartmentController::class, 'cadastrar'])->name('setor.cadastrar');
+    Route::post('setor/cadastrar/store', [DepartmentController::class, 'store'])->name('setor.store');
+
 });
 
 require __DIR__.'/auth.php';

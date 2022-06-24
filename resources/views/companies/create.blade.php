@@ -5,14 +5,14 @@
     <form method="POST" action="{{ route('empresa.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 p-3 md:p-0">
-            <!-- Nome -->
-            <div class="mt-8 md:ml-6">
-                <x-label for="company_name">Razão social</x-label>
-                <x-input id="company_name" class="block mt-1 w-full" type="name" name="company_name" :value="old('company_name')" required
+            <!-- Razão social -->
+            <div class="mt-8">
+                <x-label for="name">Razão social</x-label>
+                <x-input id="company_name" class="block mt-1 w-full" type="name" name="name" :value="old('name')" required
                          autofocus/>
             </div>
-            <!-- Email -->
-            <div class="mt-8">
+            <!-- Nome fantasia -->
+            <div class="mt-8 md:ml-6">
                 <x-label for="trading_name">Nome fantasia</x-label>
                 <x-input id="trading_name" class="block mt-1 w-full" type="text" name="trading_name" :value="old('trading_name')" required
                          autofocus/>
@@ -21,11 +21,11 @@
             <div class="mt-8">
                 <x-label for="document">CNPJ</x-label>
                 <x-input id="document" class="block mt-1 w-full"
-                         type="text" maxlength="17"
+                         type="text" maxlength="18"
                          name="document" onkeypress="mask(this,cnpj)"/>
             </div>
             <!-- Phone -->
-            <div class="mt-8">
+            <div class="mt-8 md:ml-6">
                 <x-label for="phone">Telefone de contato</x-label>
                 <x-input id="phone" class="block mt-1 w-full"
                          type="text" onkeydown="mask(this, telefone)" maxlength="15"
@@ -54,6 +54,7 @@
 
         function cnpj(v) {
             //CNPJ
+            v = v.replace(/\D/g, "")
             //Coloca ponto entre o segundo e o terceiro dígitos
             v = v.replace(/(\d{2})(\d)/, "$1.$2")
 
