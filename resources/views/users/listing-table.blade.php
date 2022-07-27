@@ -37,7 +37,7 @@
                             {{ $user->created_at }}
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                            <span onclick="showUser({{$user->id}})" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Mostrar</span>
                         </td>
                     </tr>
                     @endforeach
@@ -46,3 +46,11 @@
             <div class="mt-2">{{ $users->links() }}</div>
         </div>
 </x-app-layout>
+<div id="modal"></div>
+<script>
+    async function showUser (id) {
+        const res = await fetch(`/master/usuario/${id}`)
+            .then(response => response.json())
+        document.querySelector('#modal').innerHTML = res
+    }
+</script>

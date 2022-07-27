@@ -72,7 +72,7 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first();
 
-        return view('users.show', compact('user'));
+        return response()->json((view('users.show', compact('user')))->render());
     }
 
     public function download(User $user)
