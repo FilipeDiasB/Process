@@ -1,6 +1,6 @@
 {
-    "/js/app.js": "/js/app.js?id=97c2273c09248a57556e375338b00f1f",
-    "/js/jquery-3.6.0.min.js": "/js/jquery-3.6.0.min.js?id=289769e7e94815d33aeff9cce7ea0362",
-    "/js/user.js": "/js/user.js?id=d41d8cd98f00b204e9800998ecf8427e",
-    "/css/app.css": "/css/app.css?id=2b6ec0229eb274f34d1ce5e59190ce06"
+    "/js/app.js": "/js/app.js",
+    "/js/jquery-3.6.0.min.js": "/js/jquery-3.6.0.min.js",
+    "/css/modal.css": "/css/modal.css",
+    "/css/app.css": "/css/app.css"
 }

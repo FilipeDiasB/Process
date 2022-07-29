@@ -1,3 +1,4 @@
+
 <x-app-layout>
     <x-title>Usuários ativos</x-title>
         <div class="relative overflow-x-auto">
@@ -37,7 +38,7 @@
                             {{ $user->created_at }}
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <span onclick="showUser({{$user->id}})" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Mostrar</span>
+                            <button id="openModal" onclick="showUser( {{$user->id}} )" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Mostrar</button>
                         </td>
                     </tr>
                     @endforeach
@@ -46,11 +47,9 @@
             <div class="mt-2">{{ $users->links() }}</div>
         </div>
 </x-app-layout>
-<div id="modal"></div>
-<script>
-    async function showUser (id) {
-        const res = await fetch(`/master/usuario/${id}`)
-            .then(response => response.json())
-        document.querySelector('#modal').innerHTML = res
-    }
-</script>
+<div id="fade" class="hide"></div>
+
+<div id="modal" class="hide"></div>
+<script src="{{ asset('js/user.js') }}"> </script>
+
+
