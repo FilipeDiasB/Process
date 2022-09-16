@@ -1,0 +1,24 @@
+#fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 5;
+}
+
+#modal {
+    position: fixed;
+    z-index: 10;
+    width: 70%;
+    max-width: 90%;
+    transform: translate(-50%, -50%);
+    left: 65%;
+}
+
+#modal.hide,
+#fade.hide{
+    opacity: 0;
+}
+
